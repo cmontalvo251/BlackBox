@@ -1,0 +1,4 @@
+#!/bin/bash
+
+dclock -geometry 400x200
+

@@ -1,0 +1,334 @@
+\documentclass[10pt]{exam}
+\usepackage[pdftex]{graphicx}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{verbatim}
+%\usepackage{fancyhdr}
+\topmargin 0.0in
+\textheight 9.0in
+\headheight 12pt 
+\headsep  25pt 
+\voffset=-0.5in
+\oddsidemargin 0in
+\evensidemargin 0in
+\textwidth 6.5in
+\parindent 9pt
+\def\bfeps{\mbox{{\boldmath $\varepsilon$}}}
+\def\bfsigma{\mbox{{\boldmath $\sigma$}}}
+\def\bfchi{\mbox{{\boldmath $\chi$}}}
+\def\bfgamma{\mbox{{\boldmath $\gamma$}}}
+\def\bfP{\mathbf{P}}
+\def\bfp{\mathbf{p}}
+\def\bfQ{\mathbf{Q}}
+\def\bfq{\mathbf{q}}
+\def\bfx{\mathbf{x}}
+\def\bfn{\mathbf{n}}
+\def\bfi{\hat{\mathbf{i}}}
+\def\bfj{\hat{\mathbf{j}}}
+\def\bfk{\hat{\mathbf{k}}}
+\def\pt{\psi_{\sf T}(\bfp,\bfq;t,\tau)}
+\def\PT{\psi_{\sf T}(\bfP,\bfQ;t,\tau)}
+\def\pT{\psi_{\sf T}(\bfp,\bfQ;t,\tau)}
+\def\pTg{\psi_{\sf T}(\bfp(\xi,\eta),\bfQ(\xi,\eta);t,\tau)}
+\def\tilGF{\tilde{\psi}_{{\sf T}_{ijk}}(\bfp,\bfQ;t,\tau,\alpha_i,\bfx_j,\bfx_k)}
+\def\hatn{\hat{\mathbf n}(\bfQ)}
+\def\hatnnoq{\hat{\mathbf n}}
+\def\qn{\vec{q}(\bfQ,\tau)\cdot \hatn}
+\def\dTdn{\frac{\partial T}{\partial \hat{\mathbf n}}(\bfQ,\tau)}
+\def\beq{\begin{equation}}
+\def\eeq{\end{equation}}
+\def\beqn{\begin{eqnarray}}
+\def\eeqn{\end{eqnarray}}
+\def\rmd{{\rm d}}
+\def\ab{\overline{\alpha}}
+\def\aeff{\alpha_{{\sf eff.}}(\bfp,\bfq) }
+\def\cij{{\sf C}^i_{(jk)}}
+\def\tripsum{\sum_{i=1}^\ell \sum_{j=1}^n\sum_{k=1}^n}
+\def\rbf{{\mathscr F}}
+\def\cxx{\cos(\theta_{x \tilde{x}})}
+\def\cxy{\cos(\theta_{x \tilde{y}})}
+\def\cxz{\cos(\theta_{x \tilde{z}})}
+\def\cyx{\cos(\theta_{y \tilde{x}})}
+\def\cyy{\cos(\theta_{y \tilde{y}})}
+\def\cyz{\cos(\theta_{y \tilde{z}})}
+\def\czx{\cos(\theta_{z \tilde{x}})}
+\def\czy{\cos(\theta_{z \tilde{y}})}
+\def\czz{\cos(\theta_{z \tilde{z}})}
+\def\ttx{\tilde{t}_{\tilde{x}}}
+\def\tty{\tilde{t}_{\tilde{y}}}
+\def\ttz{\tilde{t}_{\tilde{z}}}
+\def\sxx{\sigma_{xx}}
+\def\syy{\sigma_{yy}}
+\def\szz{\sigma_{zz}}
+\def\sxy{\sigma_{xy}}
+\def\syz{\sigma_{yz}}
+\def\sxz{\sigma_{xz}}
+
+
+\begin{document}
+\pagestyle{headandfoot}
+\header{ME328, Fall 2014}{Quiz \#1 **studentName**.} {}
+\lfoot{parsetex.m by M.~W.~Renfro}
+
+%Attempting to put studentName with  trailing and leading stars after
+% the number 4 bombs.
+
+% Use this: parsetex('HW1-%s.tex',studentnames,studentnames);
+
+%^^moose=strrep(studentName,'.','_');^^
+
+%^^KoolAid=strcat(moose,'_Euler.eps');^^
+%^^KoolAid2=strcat(moose,'_Euler.pdf');^^
+%^^GatorAid=strcat(moose,'_Heun.eps');^^
+%^^GatorAid2=strcat(moose,'_Heun.pdf');^^
+%^^BandAid=strcat(moose,'_RK.eps');^^
+%^^BandAid2=strcat(moose,'_RK.pdf');^^
+
+
+%^^b=2+round(3*rand());^^
+%^^beef=num2str(b);^^
+%^^c=0.027+0.0004*round(100*rand());^^
+%^^yo=12.042+2.38*round(13*rand());^^
+%^^dee=(2+round(3*rand()));^^
+%^^d=num2str(dee);^^
+%^^tf=1.7+0.011*round(137*rand());^^
+
+%^^chub=rand();^^
+%^^if(chub<0.25);delt=0.1;end;^^
+%^^if(chub>0.25 & chub < 0.5);delt=0.15;end;^^
+%^^if(chub>0.5 & chub < 0.75);delt=0.2;end;^^
+%^^if(chub>0.75);delt=0.25;end;^^
+
+%^^cleft=1.88+0.01*randi(147);^^
+%^^cleft2=0.32+0.01*randi(73);^^
+%^^cleft3=.47+0.01*randi(103);^^
+%^^chub=rand();^^
+
+%^^if(chub<0.25);rhsterm=strcat('e^{-',num2str(cleft),'t^2}');end;^^
+%^^if(chub>0.25 & chub < 0.5);rhsterm=strcat('\frac{\cos(',num2str(cleft),'t)}{t^2+',num2str(cleft2),'}');end;^^
+%^^if(chub>0.5 & chub < 0.75);rhsterm=strcat('\frac{\sin(',num2str(cleft),'t)+',num2str(cleft3),'}{t^2+',num2str(cleft2),'}');end;^^
+%^^if(chub>0.75);rhsterm=strcat('\frac{e^{-',num2str(cleft),'t^2}}{t^2+',num2str(cleft2),'}');end;^^
+
+%^^y0=1.9+.01*randi(553);v0=35.1+.01*randi(1432);^^
+%^^mass=12+0.01*randi(339);cdamp=0.88+.01*randi(58);kay=14.2+.01*randi(444);^^
+
+%^^tf=2*delt;^^
+\begin{enumerate}
+
+\item 
+Consider the following differential equation,
+\beq
+**mass**\ddot{y}+**cdamp**\dot{y}+**kay** y=**rhsterm**,\eeq
+with initial conditions,
+\beqn
+& & y(0)=**y0** \,(m), \\
+& & \dot{y}(0)=**v0** \,(m/s). \eeqn
+Apply two steps of the fourth order Runge-Kutta method 
+with $\Delta t=**delt**$ to determine the velocity $\dot{y}(**tf**)$. 
+(150 points).
+
+
+%^^A1=2.8+0.01*randi(243); A2=5.7+0.01*randi(508); A3= 6.3+.01*randi(399);^^
+%^^xL=1.0+.01*randi(122);xR=xL+3+.01*randi(55);yL=2+.01*randi(408);yR=13+.01*randi(682);^^
+%^^A5=11+.01*randi(543);A6=7+0.01*randi(777);^^
+%^^xm=0.5*(xL+xR);^^
+\item  
+Consider the following boundary-value problem,
+\begin{equation}
+**A1** \frac{\rmd^2 y}{\rmd x^2} + **A2**e^{-x} \frac{\rmd y}{\rmd x}
++**A3** y = \frac{\cos(**A5**x )}{x^2+**A6**}, \;\;\;\;\;
+(**xL** \leq x \leq **xR**),
+\end{equation}
+with boundary conditions,
+\beqn
+ & & y(**xL**)=**yL**, \\
+ & & y(**xR**)=**yR**. \eeqn
+Apply the finite difference method with a total of three grid points
+to estimate the value of $y(x)$ at $x=**xm**$.  (100 points)
+
+
+
+%^^delx=(xR-xL)/2;^^
+%^^RHS2=cos(A5*xm)/(xm^2+A6)-((1/delx^2)*A1*(yL+yR)+(A2*exp(-xm)/(2*delx))*(yR-yL));^^
+%^^A22=(A1/delx^2)*(-2)+A3;^^
+%^^ym=RHS2/A22;^^
+%^^gradtermexp=(A2*exp(-xm)/(2*delx))*(yR-yL);^^
+%^^yLd2=(1/delx^2)*A1*yL;yRd2=(1/delx^2)*A1*yR;^^
+
+\item Consider a scenario in which you have created a dynamics
+simulation programmed in {\sf C} using the RK-4 algorithm.
+Your supervisor requests that
+your simulations will run fast enough to support real-time decisions
+and insists that you have not programmed the method correctly since,
+according to your supervisor,
+your time steps are required to be too small for the desired level of
+confidence.  
+How would you address the concern
+of your supervisor in a professional manner?
+(15 points)
+
+\end{enumerate}
+\clearpage
+%^^t=0;v=v0;y=y0;^^
+%^^tdummy=t;vdummy=v;ydummy=y;^^
+%^^if(chub<0.25);vsk1=(1/mass)*(chub1(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk1=vdummy;end;^^
+%^^if(chub>0.25 & chub < 0.5);;vsk1=(1/mass)*(chub2(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk1=vdummy;end;^^
+%^^if(chub>0.5 & chub < 0.75);;vsk1=(1/mass)*(chub3(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk1=vdummy;end;^^
+%^^if(chub>0.75);vsk1=chub4(t,cleft,cleft2,cleft3);;vsk1=(1/mass)*(chub4(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk1=vdummy;end;^^
+
+%^^vdummy=v+0.5*delt*vsk1;ydummy=y+0.5*delt*ysk1;tdummy=t+0.5*delt;^^
+%^^vda=vdummy;yda=ydummy;^^
+%^^if(chub<0.25);vsk2=(1/mass)*(chub1(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk2=vdummy;end;^^
+%^^if(chub>0.25 & chub < 0.5);;vsk2=(1/mass)*(chub2(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk2=vdummy;end;^^
+%^^if(chub>0.5 & chub < 0.75);;vsk2=(1/mass)*(chub3(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk2=vdummy;end;^^
+%^^if(chub>0.75);vsk2=chub4(t,cleft,cleft2,cleft3);;vsk2=(1/mass)*(chub4(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk2=vdummy;end;^^
+
+%^^vdummy=v+0.5*delt*vsk2;ydummy=y+0.5*delt*ysk2;^^
+%^^vdb=vdummy;ydb=ydummy;^^
+
+%^^if(chub<0.25);vsk3=(1/mass)*(chub1(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk3=vdummy;end;^^
+%^^if(chub>0.25 & chub < 0.5);;vsk3=(1/mass)*(chub2(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk3=vdummy;end;^^
+%^^if(chub>0.5 & chub < 0.75);;vsk3=(1/mass)*(chub3(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk3=vdummy;end;^^
+%^^if(chub>0.75);vsk3=chub4(t,cleft,cleft2,cleft3);;vsk3=(1/mass)*(chub4(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk3=vdummy;end;^^
+
+%^^vdummy=v+delt*vsk3;ydummy=y+delt*ysk3;tdummy=t+delt;^^
+%^^vdc=vdummy;ydc=ydummy;^^
+
+%^^if(chub<0.25);vsk4=(1/mass)*(chub1(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk4=vdummy;end;^^
+%^^if(chub>0.25 & chub < 0.5);;vsk4=(1/mass)*(chub2(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk4=vdummy;end;^^
+%^^if(chub>0.5 & chub < 0.75);;vsk4=(1/mass)*(chub3(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk4=vdummy;end;^^
+%^^if(chub>0.75);vsk4=chub4(t,cleft,cleft2,cleft3);;vsk4=(1/mass)*(chub4(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk4=vdummy;end;^^
+
+%^^y=y+(delt/6)*(ysk1+2.0*ysk2+2.0*ysk3+ysk4);^^
+%^^v=v+(delt/6)*(vsk1+2.0*vsk2+2.0*vsk3+vsk4);^^
+
+%^^t=t+delt;^^
+
+Solution:
+
+After one time step ($t=**t**$),
+\beqn
+& &y_{sk1}=**ysk1**, \nonumber \\
+& &v_{sk1}=**vsk1**, \nonumber \\
+& & (y_{\sf dummy},\, v_{\sf dummy}=**yda**, \, **vda**) \nonumber \\ 
+& &y_{sk2}=**ysk2**, \nonumber \\
+& &v_{sk2}=**vsk2**, \nonumber \\
+& & (y_{\sf dummy},\, v_{\sf dummy}=**ydb**, \, **vdb**) \nonumber \\
+& &y_{sk3}=**ysk3**, \nonumber \\
+& &v_{sk3}=**vsk3**, \nonumber \\
+& & (y_{\sf dummy},\, v_{\sf dummy}=**ydc**, \, **vdc**) \nonumber \\
+& &y_{sk4}=**ysk4**, \nonumber \\
+& &v_{sk4}=**vsk4**, \nonumber \eeqn
+so that $y$ and $\dot{y}$ are,
+\beqn
+y(**t**)=**y** , \nonumber \\
+\dot{y}(**t**)=**v**. \eeqn
+
+%^^tdummy=t;vdummy=v;ydummy=y;^^
+%^^if(chub<0.25);vsk1=(1/mass)*(chub1(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk1=vdummy;end;^^
+%^^if(chub>0.25 & chub < 0.5);;vsk1=(1/mass)*(chub2(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk1=vdummy;end;^^
+%^^if(chub>0.5 & chub < 0.75);;vsk1=(1/mass)*(chub3(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk1=vdummy;end;^^
+%^^if(chub>0.75);vsk1=chub4(t,cleft,cleft2,cleft3);;vsk1=(1/mass)*(chub4(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk1=vdummy;end;^^
+
+%^^vdummy=v+0.5*delt*vsk1;ydummy=y+0.5*delt*ysk1;tdummy=t+0.5*delt;^^
+%^^vde=vdummy;yde=ydummy;^^
+
+%^^if(chub<0.25);vsk2=(1/mass)*(chub1(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk2=vdummy;end;^^
+%^^if(chub>0.25 & chub < 0.5);;vsk2=(1/mass)*(chub2(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk2=vdummy;end;^^
+%^^if(chub>0.5 & chub < 0.75);;vsk2=(1/mass)*(chub3(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk2=vdummy;end;^^
+%^^if(chub>0.75);vsk2=chub4(t,cleft,cleft2,cleft3);;vsk2=(1/mass)*(chub4(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk2=vdummy;end;^^
+
+%^^vdummy=v+0.5*delt*vsk2;ydummy=y+0.5*delt*ysk2;^^
+%^^vdf=vdummy;ydf=ydummy;^^
+
+%^^if(chub<0.25);vsk3=(1/mass)*(chub1(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk3=vdummy;end;^^
+%^^if(chub>0.25 & chub < 0.5);;vsk3=(1/mass)*(chub2(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk3=vdummy;end;^^
+%^^if(chub>0.5 & chub < 0.75);;vsk3=(1/mass)*(chub3(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk3=vdummy;end;^^
+%^^if(chub>0.75);vsk3=chub4(t,cleft,cleft2,cleft3);;vsk3=(1/mass)*(chub4(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk3=vdummy;end;^^
+
+%^^vdummy=v+delt*vsk3;ydummy=y+delt*ysk3;tdummy=t+delt;^^
+%^^vdg=vdummy;ydg=ydummy;^^
+
+%^^if(chub<0.25);vsk4=(1/mass)*(chub1(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk4=vdummy;end;^^
+%^^if(chub>0.25 & chub < 0.5);;vsk4=(1/mass)*(chub2(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk4=vdummy;end;^^
+%^^if(chub>0.5 & chub < 0.75);;vsk4=(1/mass)*(chub3(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk4=vdummy;end;^^
+%^^if(chub>0.75);vsk4=chub4(t,cleft,cleft2,cleft3);;vsk4=(1/mass)*(chub4(tdummy,cleft,cleft2,cleft3)-cdamp*vdummy-kay*ydummy);ysk4=vdummy;end;^^
+
+%^^y=y+(delt/6)*(ysk1+2.0*ysk2+2.0*ysk3+ysk4);^^
+%^^v=v+(delt/6)*(vsk1+2.0*vsk2+2.0*vsk3+vsk4);^^
+
+%^^t=t+delt;^^
+
+After the second time step ($t=**t**$),
+\beqn
+& &y_{sk1}=**ysk1**, \nonumber \\
+& &v_{sk1}=**vsk1**, \nonumber \\
+& & (y_{\sf dummy},\, v_{\sf dummy}=**yde**, \, **vde**) \nonumber \\
+& &y_{sk2}=**ysk2**, \nonumber \\
+& &v_{sk2}=**vsk2**, \nonumber \\
+& & (y_{\sf dummy},\, v_{\sf dummy}=**ydf**, \, **vdf**) \nonumber \\
+& &y_{sk3}=**ysk3**, \nonumber \\
+& &v_{sk3}=**vsk3**, \nonumber \\
+& & (y_{\sf dummy},\, v_{\sf dummy}=**ydg**, \, **vdg**) \nonumber \\
+& &y_{sk4}=**ysk4**, \nonumber \\
+& &v_{sk4}=**vsk4**, \nonumber \eeqn
+so that $y$ and $\dot{y}$ are,
+\beq
+\boxed{y(**t**)=**y**,} \eeq 
+\beq
+\boxed{\dot{y}(**t**)=**v**.} \eeq
+
+For the second problem, the value of the right hand side is:
+\beq
+RHS_2=**RHS2**. \eeq
+
+Some other quantities are:
+\beq
+**A2** e^{-x} \frac{\rmd y}{\rmd x} \approx
+**gradtermexp**. \eeq
+
+
+The coefficient of $y_2$ is $**A22**$.  The final answer is
+\beq
+\boxed{y_2=**ym**}. \eeq
+The contributions from $y_{\sf L}$ and $y_{\sf R}$ are:
+\beqn
+& & **A1** \frac{\rmd^2 y}{\rmd x^2}_{L} =
+**yLd2**, \nonumber \\
+& & **A1** \frac{\rmd^2 y}{\rmd x^2}_{R} =
+**yRd2**, \nonumber \\ \eeqn
+
+%^^RHS_tru=cos(A5*xm)/(xm^2+A6);^^
+The right side by itself is,
+\beqn
+&&\frac{\cos(**A5** x_m)}{x_m^2+**A6**}
+=**RHS_tru**, \eeqn
+where $x_m=**xm**$.
+
+Other items:
+\beqn
+& & \frac{**A1** y_1}{\Delta x^2} = **A1*yL/(delx^2)**, \\
+& & \frac{**A1** y_3}{\Delta x^2} = **A1*yR/(delx^2)**,  \\
+& & \frac{-**A2** y_1}{2 \Delta x} = **-A2*yL/(2*delx)**,  \\
+& & \frac{**A2** y_3}{2 \Delta x} = **A2*yR/(2*delx)**.
+ \eeqn
+Finally,
+\beqn
+& & \Delta x = **delx**, \\
+& & \frac{**A1**}{\Delta x ^2}= **A1/(delx^2)**, \\
+& & \frac{**A2**}{2 \Delta x }= **A2/(2*delx)**, \eeqn
+
+
+
+
+
+
+
+
+
+%\end{document}
+
+
+
+
+\end{document}

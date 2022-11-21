@@ -1,0 +1,70 @@
+[
+
+    //make a symbolic link to this file
+    // ~/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap
+
+    //remember you can make projects in sublime just like Kate
+    //you may want to revisit kate though because this program apparently
+    //has an endless trial but it's $70 so this pop up menu keeps popping up.
+    //kind of annoying. I just think Sublime looks really cool.
+    //The little toolbar on the right is really neat and I just like the feel
+    //it's all dark and mysterious and these key bindings are pretty easy to work with
+    
+    //Anyway to get the toolbar on the left with the files just click Project->Add Folder to Project
+    //Then you should be able to see everything there
+    //You can use the build command to build C++ code but it only works for C++. They don't have
+    //Fortran. Anyway I might not end up using sublime if I can get PyDev and Eclipse to work.
+    //But at least it's a really light weight text editor which is what I wanted.
+    //One more thing to try. Kate,Emacs, Sublime. Let's see which one wins out.
+
+    //Just for notes
+    //ctrl + = make font bigger
+    //ctrl + - make font smaller
+
+    //Shift + Alt + 1 - one window
+    //Shift + alt + 2 - two columns
+    //shift + alt + 3 - three columns
+    //shift + alt + 4 - four columns
+    //ctrl + tab - switch windows
+    //shift + alt + 5 - grid format
+    //shift + alt + 8 - two rows
+    //shift + alt + 9 - three rows
+	
+	//Moving around
+	{ "keys": ["ctrl+b"], "command": "move", "args": {"by": "characters", "forward": false} },
+	{ "keys": ["ctrl+f"], "command": "move", "args": {"by": "characters", "forward": true} },
+	{ "keys": ["ctrl+p"], "command": "move", "args": {"by": "lines", "forward": false} },
+	{ "keys": ["ctrl+n"], "command": "move", "args": {"by": "lines", "forward": true} },
+
+    //End of file
+    { "keys": ["ctrl+a"], "command": "move_to", "args": {"to": "bol", "extend": false} },
+	{ "keys": ["ctrl+e"], "command": "move_to", "args": {"to": "eol", "extend": false} },
+
+	//cut,copy paste
+    { "keys": ["ctrl+w"], "command": "cut" },
+	{ "keys": ["alt+w"], "command": "copy" },
+	{ "keys": ["ctrl+y"], "command": "paste" },
+
+    //Delete a character forward
+    { "keys": ["ctrl+d"], "command": "right_delete" },
+
+    //Cut a whole line
+    { "keys": ["ctrl+k"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete Line.sublime-macro"} },
+
+	//Fix some broken ones
+
+	//like build
+	{ "keys": ["ctrl+q"], "command": "build" },
+	//and find
+    { "keys": ["ctrl+s"], "command": "show_panel", "args": {"panel": "find", "reverse": false} },
+    //and save    
+    { "keys": ["ctrl+space"], "command": "save" },
+    //close window
+    { "keys": ["ctrl+c"], "command": "close" },
+    //new file
+    { "keys": ["ctrl+m"], "command": "new_file" },
+    //{ "keys": ["ctrl+N"], "command": "new_file" },
+
+    {"keys": ["ctrl+shift+w"],"command": "toggle_setting","args": {"setting": "word_wrap"}},
+
+]
