@@ -1,4 +1,4 @@
 #!/bin/bash
 
-dclock -geometry 400x200
+dclock -seconds -geometry 400x200
 
