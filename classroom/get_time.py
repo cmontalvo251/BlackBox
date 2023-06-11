@@ -3,7 +3,7 @@
 from datetime import datetime
 go = True
 while go:
-    val = raw_input('Bib Number? ')
+    val = input('Bib Number? ')
     if val == 'q':
         go = False
     now = datetime.now()
